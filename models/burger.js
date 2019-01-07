@@ -15,6 +15,11 @@ var burgers = {
         orm.updateOne(tableInput, devouredStatus, burgerId, function(res){
             cb(res)
         });
+    },
+    deleteOne: function(tableInput, burgerId, cb){
+        orm.deleteOne(tableInput, burgerId, function(res){
+            cb(res)
+        });
     }
 };
 

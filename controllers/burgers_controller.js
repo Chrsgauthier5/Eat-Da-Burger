@@ -46,6 +46,19 @@ router.put('/', function (req, res) {
         });
 });
 
+router.delete('/', function(req,res){
+    console.log(req.body);
+    burgers.deleteOne(req.body.table, req.body.id,
+        function (result) {
+            console.log(result);
+            if (result.affectedRows == 0) {
+                return res.status(404).end();
+            }
+            else {
+                res.status(200).end();
+            }
+        });
+})
 
 
 module.exports = router;

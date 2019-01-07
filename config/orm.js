@@ -28,6 +28,14 @@ var orm = {
             cb(result)
         });
     },
+    deleteOne: function (tableInput, burgerId, cb) {
+        var queryString = 'DELETE FROM ?? WHERE ID = ?';
+        connection.query(queryString, [tableInput, burgerId], function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            cb(result)
+        });
+    }
 };
 
 module.exports = orm;

@@ -1,0 +1,43 @@
+<div class='container p-3 mb-2 bg-warning text-dark'>
+
+  <h1>Eat-Da-Burger</h1>
+
+  <h2>Devour an existing Burger or Add your own Burger!</h2>
+
+
+  <img src='/assets/images/burger.jpg'>
+  
+  <br>
+
+  <ul>
+    {{#each burgers}} {{#unless this.devoured}} {{!-- If its devoured don't list it --}}
+    <p>ID:{{this.id}}</p>
+    <p>Order: {{this.burger_name}}</p>
+    <p>Has it been devoured:  {{this.devoured}} </p>
+    <button class="devour-burger" type="submit" data-id="{{id}}" data-ate-burger="{{devoured}}">Devour It!</button>
+    <hr>
+    {{/unless}} {{/each}}
+  </ul>
+
+
+  <ul>
+    {{#each burgers}} {{#if this.devoured}} {{!-- If its devoured don't list it --}}
+    <p>ID:{{this.id}}</p>
+    <p>Order: {{this.burger_name}}</p>
+    <p>Has it been devoured:  {{this.devoured}} </p>
+    <hr>
+    {{/if}} {{/each}}
+  </ul>
+
+
+  
+
+    <textarea type='text' name='burger' id='newBurger'></textarea>
+    <button type='submit' class='add-burger'>Add a new Burger</button>
+
+  
+
+
+</div>
+
+{{!-- end of container --}}
