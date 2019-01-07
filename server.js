@@ -1,12 +1,16 @@
 var express = require("express");
+var path = require("path");
 require('dotenv').config()
 var app = express();
 var exphbs = require("express-handlebars");
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
+//Working directory
+const DIR = __dirname;
 
-// app.use(express.static("public"));
+
+app.use(express.static(path.join(DIR, "public")));
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

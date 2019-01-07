@@ -1,12 +1,89 @@
-<h1>Eat-Da-Burger</h1>
+<div class='container p-3 mb-2 bg-warning text-dark'>
 
-<h2>Devour an existing Burger or Add your own Burger!</h2>
+  <h1>Eat-Da-Burger</h1>
 
-<ul>
-{{#each burgers}}
-<p>ID:{{this.id}}</p>
-<p>Order: {{this.burger_name}}</p>
-<p>Has it been devoured: {{this.devoured}} </p>
-<hr>
-{{/each}}
-</ul>
+  <h2>Devour an existing Burger or Add your own Burger!</h2>
+
+
+  <img src='/assets/images/burger.jpg'>
+  <ul>
+    {{#each burgers}} {{#unless this.devoured}} {{!-- If its devoured don't list it --}}
+    <p>ID:{{this.id}}</p>
+    <p>Order: {{this.burger_name}}</p>
+    <p>Has it been devoured:  {{this.devoured}} </p>
+    <button class="devour-burger" type="submit" data-id="{{id}}" data-ate-burger="{{devoured}}">Devour It!</button>
+    <hr>
+    {{/unless}} {{/each}}
+  </ul>
+
+
+  
+
+    <textarea type='text' name='burger' id='newBurger'></textarea>
+    <button type='submit' class='add-burger'>Add a new Burger</button>
+
+  
+
+
+</div>
+
+{{!-- end of container --}}
+
+
+<script>
+
+  
+
+  $(".devour-burger").on("click", function (event) {
+    event.preventDefault();
+
+    var id = $(this).data("id"); // this gives you the id of the burger from the DB
+    var ateBurger = 1; // when we click this we ultimately are switching the 0 to a 1 (false to true)
+    var table = 'burgers';
+    var newAteBurger = // object we will pass to ajax containing data we need for SQL update
+    {
+      id: id,
+      devoured: ateBurger,
+      table: table
+    };
+
+    $.ajax('/', {
+      type: 'PUT',
+      data: newAteBurger
+    }).then(
+      function () {
+        console.log('Changed devoured from false to ' + ateBurger);
+        location.reload();
+
+      });
+
+  });
+
+  $('.add-burger').on('click', function (event) {
+    event.preventDefault();
+
+    var ateBurger = 0;
+    var table = 'burgers';
+    var newBurger = $('textarea#newBurger').val();
+
+    var addThisBurger =
+    {
+      devoured: ateBurger,
+      table: table,
+      newBurger: newBurger
+    };
+
+    $.ajax('/', {
+      type: 'POST',
+      data: addThisBurger
+    }).then(
+      function () {
+
+        console.log('Added ' + newBurger + ' to the database!');
+        location.reload();
+
+      });
+
+  });
+
+</script>

@@ -1,0 +1,11 @@
+img {
+    height: 250px;
+    width: 250px;
+}
+.container{
+    text-align: center;
+}
+.add-burger{
+    display: block;
+    margin: 0 auto;
+}

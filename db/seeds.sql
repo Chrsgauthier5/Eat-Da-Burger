@@ -4,3 +4,7 @@ INSERT INTO burgers (burger_name, devoured) VALUES
 ('Bacon Cheddar Cheeseburger', false),
 ('Chicken and Waffle Burger', false), 
 ('Black Bean Veggie Burger', false);
+
+
+-- Set devoured status back to false 
+update burgers set devoured = 0 where id in (1,2,3,4)
