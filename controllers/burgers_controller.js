@@ -18,7 +18,7 @@ router.get("/", function (req, res) {
 router.post("/", function (req, res) {
 
     console.log(req.body);
-    burgers.insertOne(req.body.table, req.body.newBurger, req.body.devoured, 
+    burgers.insertOne(req.body.table, req.body.newBurgerUpper, req.body.devoured, 
         function (result) {
             console.log(result);
             if (result.affectedRows == 0) {

@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(191, 29, 29);
     background-color: rgba(255, 204, 38, 0.961);
 }
@@ -27,14 +27,8 @@ h1{
 
 h2 {
     border-bottom: solid 2px gray;
-    font-size: 22px;
+    font-size: 25px;
     margin-bottom: 12px;
-}
-
-p {
-    margin-top: -6px;
-    margin-bottom: -6px;
-    font-size: 14px;
 }
 
 img {
@@ -53,7 +47,7 @@ label {
     font-size: 15px;
 }
 
-#newBurger, #chefName {
+#newBurger{
     border: 2px solid rgb(191, 29, 29);
     width: 75%;
     height: 32px;
@@ -63,7 +57,7 @@ label {
     background-color: whitesmoke;
 }
 
-#burgerName:focus, #chefName:focus {
+#burgerName:focus{
     outline: none;
     box-shadow: 0 0 0 0.2rem rgb(159, 159, 159);   
 }

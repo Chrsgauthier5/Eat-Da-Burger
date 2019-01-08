@@ -1,11 +1,11 @@
 <div class='container p-3 mb-2 bg-success text-dark'>
-  <h1 class=>EAT-DA-BURGER</h1>
+  <h1 class='text-danger bg-dark'>EAT-DA-BURGER</h1>
 
 
   <div class="row">
 
     <div class="col-md-3" id="burgerEat">
-      <h2>Burgers you can eat</h2>
+      <h2>Burgers on the Menu</h2>
       <ul>
         {{#each burgers}} {{#unless this.devoured}}
         <li>
@@ -27,12 +27,12 @@
           <input type="text" name="burger_name" id="newBurger" value=" Burger Name" onfocus="this.value=''">
           
         </div>
-        <button class="btn btn-lg add-burger" type="submit">Make your Burger</button>
+        <button class="btn btn-lg add-burger" type="submit">Add New Burger to the Menu</button>
       </form>
     </div>
 
     <div class="col-md-3" id="burgerAte">
-      <h2>Burgers that have been eaten</h2>
+      <h2>Devoured Burgers</h2>
       <ul>
         {{#each burgers}} {{#if this.devoured}}
         <li>
@@ -104,11 +104,18 @@ $('.delete').on('click', function (event){
     var table = 'burgers';
     var newBurger = $('input#newBurger').val();
 
+    var newBurgerUpper = newBurger.toLowerCase()
+    .split(' ')
+    .map((s)=> s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
+    console.log(newBurgerUpper);
+
     var addThisBurger =
     {
       devoured: ateBurger,
       table: table,
-      newBurger: newBurger
+      newBurger: newBurger,
+      newBurgerUpper: newBurgerUpper
     };
 
     $.ajax('/', {
@@ -117,7 +124,7 @@ $('.delete').on('click', function (event){
     }).then(
       function () {
 
-        console.log('Added ' + newBurger + ' to the database!');
+        console.log('Added ' + newBurgerUpper + ' to the database!');
         location.reload();
 
       });
